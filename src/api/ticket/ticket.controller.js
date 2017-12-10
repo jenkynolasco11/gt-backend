@@ -276,7 +276,7 @@ export const saveTickets = async data => {
 
     const tickets = await Promise.all(promises)
 
-    meta.lastReceiptId += 1
+    meta.lastReceiptId = meta.lastReceiptId + 1
     meta.lastTicketId += tickets.length
     await meta.save()
 
