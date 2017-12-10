@@ -49,11 +49,17 @@ const server = async done => {
 
     app
       .use(async (ctx, next) => {
+        // ctx.header('')
+        // ctx.res.setHeader('Access-Control-Allow-Origin', '*')
+        // ctx.res.setHeader('Access-Control-Allow-Methods', 'GET,PUT,POST')
+        // ctx.res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization, Content-Length, X-Requested-With')
+        // next()
+        // ctx.set()
         ctx.set('Access-Control-Allow-Origin', '*')
-        ctx.set('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept')
-        // ctx.user('')
-        return await next()
-      }) // Security | Modify access to server via http(s)
+        ctx.set('Access-Control-Allow-Methods', 'GET,PUT,POST')
+        ctx.set('Access-Control-Allow-Headers', 'Content-Type, Authorization, Content-Length, X-Requested-With')
+        await next()
+      })
       .use(bodyparser({ multipart : true }))
       .use(serve('./src/public/assets'))
       .use(session(sessionParams, app))
