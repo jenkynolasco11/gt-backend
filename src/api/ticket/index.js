@@ -14,7 +14,7 @@ ticketRouter.get('/:id/receipt', async ctx => {
       const tckt = await Ticket.findOne({ id })
 
       if(tckt) {
-        const data = getTicketReceipt(tckt)
+        const data = await getTicketReceipt(tckt)
 
         return ctx.body = { ok : true, data, message : '' }
       }

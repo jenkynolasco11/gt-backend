@@ -36,21 +36,12 @@ rootRoute.use('/', api.routes(), api.allowedMethods())
 ******************************************************************** */
 /** ********* TODO : Uncomment this after finishing frontend *********/
 // rootRoute.use('/', admin.routes(), admin.allowedMethods())
-rootRoute.get('/ticket/*', ctx => {
-  return ctx.redirect('/')
-})
 
-rootRoute.get('/ride/*', ctx => {
-  return ctx.redirect('/')
-})
-
-rootRoute.get('/', ctx => {
-  console.log('hereeeee...')
-  return ctx.render('index', { appport : global.APPPORT })
-  // TODO : Reconsider this redirect in here
-  // if(ctx.isAuthenticated()) return ctx.redirect('/admin/dashboard')
-  // return ctx.redirect('/admin/auth')
-})
+// rootRoute.get('/', ctx => {
+//   // TODO : Reconsider this redirect in here
+//   if(ctx.isAuthenticated()) return ctx.redirect('/admin/dashboard')
+//   return ctx.redirect('/admin/auth')
+// })
 /** ******************************************************************/
 
 // rootRoute.stack.forEach(p => console.log(p.path, p.methods ))
