@@ -51,14 +51,16 @@ export const getTicketData = async tckt => {
 export const getTicketReceipt = async tckt => {
   try {
     const receipt = await Receipt.findById(tckt.receipt)
-    const { cardLastDigits, cardBrand, totalAmount, type, fee, extraFee } = receipt
+    const { cardLastDigits, cardBrand, totalAmount, paymentType, fee, extraFee, luggage } = receipt
 
-    const data = { fee, extraFee, totalAmount, type }
+    const data = { fee, extraFee, totalAmount, paymentType, luggage }
+    // console.log(cardLastDigits, cardBrand, paymentType)
+    // console.log(receipt._doc)
 
-    if(type === 'CARD')
-
-    data.cardBrand = cardBrand
-    data.cardLastDigits = cardLastDigits
+    if(paymentType === 'CARD') {
+      data.cardBrand = cardBrand
+      data.cardLastDigits = cardLastDigits
+    }
 
     return data
   } catch (e) {
@@ -77,8 +79,9 @@ export const reformatTicket = (ctx, next) => {
   // console.log(body)
   if(body.isLocal) return next()
 
-  console.log(body)
   // This is for the page data
+  console.log(body)
+  console.log('-------------------------')
   const newBody = {
     frm : body.desde,
     to : body.hacia,
