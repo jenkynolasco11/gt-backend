@@ -121,8 +121,8 @@ export const reformatTicket = (ctx, next) => {
     // fee : parseFloat(body.precio_primera_ruta),
     // extraFee : parseFloat(body.precio_segunda_ruta),
   }
-  newBody.extraFee = parseFloat(body.precio_primera_ruta)
-  newBody.extraFee += parseFloat(body.precio_segunda_ruta)
+  newBody.extraFee = parseFloat(body.precio_primera_ruta ? body.precio_primera_ruta : 0)
+  newBody.extraFee += parseFloat(body.precio_segunda_ruta ? body.precio_segunda_ruta : 0)
 
   newBody.totalAmount = newBody.fee + newBody.extraFee
 
