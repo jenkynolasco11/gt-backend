@@ -229,6 +229,8 @@ export const saveTickets = async data => {
   try {
     const meta = await Meta.findOne({})
 
+    // meta.lastReceiptId = 764
+
     const person = await createPerson(data)
 
     const pickUp = await (
@@ -243,11 +245,18 @@ export const saveTickets = async data => {
       : null
     )
 
-    const receiptId = meta.lastReceiptId + 1
+    // console.log(data)
+    // meta = await meta.save()
+    
+    // console.log(meta)
+    meta.lastReceiptId += 1
+
+    const receiptId = meta.lastReceiptId
     const receipt = await saveReceipt(receiptId, howMany, data)
 
     // If anything got bad on inserting, then erase all the shit back!
     if(!receipt || !person || (!pickUp && data.willPick) || (!dropOff && data.willDrop)) {
+      console.log(receipt, person, pickUp, dropOff, data.willPick, data.willDrop)
       console.log('Erasing shit... Something happened...')
 
       [
@@ -278,12 +287,13 @@ export const saveTickets = async data => {
 
     meta.lastReceiptId = meta.lastReceiptId + 1
     meta.lastTicketId += tickets.length
+
     await meta.save()
 
     // return tickets
     return receiptId
   } catch (e) {
-    console.log(e)
+    
     return null
   }
 }

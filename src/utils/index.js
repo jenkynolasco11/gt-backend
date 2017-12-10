@@ -15,11 +15,12 @@ import {
 
 export const createPerson = async ({ firstname, lastname, email, phoneNumber }) => {
   try {
-    let person = await Person.findOne({ phoneNumber })
+    let person = await Person.findOne({ $or : [{ email }, { phoneNumber }] })
     if(!person) person = await new Person({ firstname, lastname, email, phoneNumber }).save()
 
     return person._id
   } catch (e) {
+    console.log(e)
     return null
   }
 }
