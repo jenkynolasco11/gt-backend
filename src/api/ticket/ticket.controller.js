@@ -243,7 +243,7 @@ export const saveTickets = async data => {
       : null
     )
 
-    const receiptId = meta.lastReceiptId
+    const receiptId = meta.lastReceiptId + 1
     const receipt = await saveReceipt(receiptId, howMany, data)
 
     // If anything got bad on inserting, then erase all the shit back!
