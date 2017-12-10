@@ -37,15 +37,15 @@ rootRoute.use('/', api.routes(), api.allowedMethods())
 /** ********* TODO : Uncomment this after finishing frontend *********/
 // rootRoute.use('/', admin.routes(), admin.allowedMethods())
 rootRoute.get('/ticket/*', ctx => {
-  return ctx.render('index')
+  return ctx.redirect('/')
 })
 
 rootRoute.get('/ride/*', ctx => {
-  return ctx.render('index')
+  return ctx.redirect('/')
 })
 
 rootRoute.get('/', ctx => {
-  return ctx.render('index')
+  return ctx.render('index', { appport : global.APPPORT })
   // TODO : Reconsider this redirect in here
   // if(ctx.isAuthenticated()) return ctx.redirect('/admin/dashboard')
   // return ctx.redirect('/admin/auth')

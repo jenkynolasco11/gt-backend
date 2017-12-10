@@ -20,6 +20,9 @@ import './passport'
 global.Promise = bluebird.Promise
 mongoose.Promise = bluebird.Promise
 
+// global.APPURL = `http://localhost:${ process.env.PORT || 8000 }/api/v1`
+global.APPPORT = process.env.PORT
+
 const server = async done => {
   try {
     await mongoose.connect(config.DBURI, { useMongoClient : true })
@@ -48,13 +51,13 @@ const server = async done => {
     app.keys = config.KEYS
 
     app
-      .use(cors({ 
+      .use(cors(/*{ 
         origin : () => '*',
         // credentials : true,
         // allowHeaders : [ 
         //   'Origin', 'X-Requested-With', 'Content-Type', 'Accept'
         // ]
-      })) // Security | Modify access to server via http(s)
+      }*/)) // Security | Modify access to server via http(s)
       .use(bodyparser({ multipart : true }))
       .use(serve('./src/public/assets'))
       .use(session(sessionParams, app))
