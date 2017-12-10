@@ -229,7 +229,7 @@ export const saveTickets = async data => {
   try {
     const meta = await Meta.findOne({})
 
-    // meta.lastReceiptId = 764
+    // meta.lastReceiptId = 77
 
     const person = await createPerson(data)
 
@@ -249,7 +249,7 @@ export const saveTickets = async data => {
     // meta = await meta.save()
     
     // console.log(meta)
-    meta.lastReceiptId += 1
+    // meta.lastReceiptId += 1
 
     const receiptId = meta.lastReceiptId
     const receipt = await saveReceipt(receiptId, howMany, data)
@@ -293,7 +293,9 @@ export const saveTickets = async data => {
     // return tickets
     return receiptId
   } catch (e) {
-    
+    console.log()
+    console.log(e)
+    console.log()
     return null
   }
 }
