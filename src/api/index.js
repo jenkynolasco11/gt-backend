@@ -37,11 +37,10 @@ rootRoute.use('/', api.routes(), api.allowedMethods())
 /** ********* TODO : Uncomment this after finishing frontend *********/
 // rootRoute.use('/', admin.routes(), admin.allowedMethods())
 
-// rootRoute.get('/', ctx => {
-//   // TODO : Reconsider this redirect in here
-//   if(ctx.isAuthenticated()) return ctx.redirect('/admin/dashboard')
-//   return ctx.redirect('/admin/auth')
-// })
+rootRoute.get('/', ctx => {
+  // TODO : Reconsider this redirect in here
+  return ctx.render('index', { appurl : process.env.PORT })
+})
 /** ******************************************************************/
 
 // rootRoute.stack.forEach(p => console.log(p.path, p.methods ))
