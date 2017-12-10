@@ -51,13 +51,13 @@ const server = async done => {
     app.keys = config.KEYS
 
     app
-      .use(cors(/*{ 
-        origin : () => '*',
+      .use(cors({
+        origin : '*',
         // credentials : true,
         // allowHeaders : [ 
         //   'Origin', 'X-Requested-With', 'Content-Type', 'Accept'
         // ]
-      }*/)) // Security | Modify access to server via http(s)
+      })) // Security | Modify access to server via http(s)
       .use(bodyparser({ multipart : true }))
       .use(serve('./src/public/assets'))
       .use(session(sessionParams, app))
