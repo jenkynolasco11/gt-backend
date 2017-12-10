@@ -48,13 +48,12 @@ const server = async done => {
     app.keys = config.KEYS
 
     app
-      .use(cors({ 
-        origin : () => '*',
-        // credentials : true,
-        // allowHeaders : [ 
-        //   'Origin', 'X-Requested-With', 'Content-Type', 'Accept'
-        // ]
-      })) // Security | Modify access to server via http(s)
+      .use(async (ctx, next) => {
+        ctx.set('Access-Control-Allow-Origin', '*')
+        ctx.set('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept')
+        // ctx.user('')
+        return await next()
+      }) // Security | Modify access to server via http(s)
       .use(bodyparser({ multipart : true }))
       .use(serve('./src/public/assets'))
       .use(session(sessionParams, app))
