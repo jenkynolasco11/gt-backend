@@ -52,6 +52,7 @@ const server = async done => {
         ctx.set('Access-Control-Allow-Origin', '*')
         ctx.set('Access-Control-Allow-Methods', 'GET,PUT,POST')
         ctx.set('Access-Control-Allow-Headers', 'Content-Type, Authorization, Content-Length, X-Requested-With')
+
         await next()
       })
       .use(bodyparser({ multipart : true }))
