@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start" : "./node_modules/.bin/babel-node app.js",
+    "start" : "babel-node app.js",
     "dev": "nodemon --exec babel-node app.js -e *.js*",
     "webpack": "./node_modules/.bin/webpack-dev-server",
     "mockup": "babel-node ./src/models/mockupData.js",
