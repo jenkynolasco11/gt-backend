@@ -54,9 +54,9 @@ const server = async done => {
       .use(cors({
         origin : '*',
         // credentials : true,
-        // allowHeaders : [ 
-        //   'Origin', 'X-Requested-With', 'Content-Type', 'Accept'
-        // ]
+        allowHeaders : [ 
+          'Origin', 'X-Requested-With', 'Content-Type', 'Accept'
+        ]
       })) // Security | Modify access to server via http(s)
       .use(bodyparser({ multipart : true }))
       .use(serve('./src/public/assets'))
