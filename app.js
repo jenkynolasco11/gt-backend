@@ -20,9 +20,6 @@ import './passport'
 global.Promise = bluebird.Promise
 mongoose.Promise = bluebird.Promise
 
-// global.APPURL = `http://localhost:${ process.env.PORT || 8000 }/api/v1`
-global.APPPORT = process.env.PORT
-
 const server = async done => {
   try {
     await mongoose.connect(config.DBURI, { useMongoClient : true })
@@ -52,24 +49,11 @@ const server = async done => {
 
     app
       .use(async (ctx, next) => {
-        // ctx.header('')
-        // ctx.res.setHeader('Access-Control-Allow-Origin', '*')
-        // ctx.res.setHeader('Access-Control-Allow-Methods', 'GET,PUT,POST')
-        // ctx.res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization, Content-Length, X-Requested-With')
-        // next()
-        // ctx.set()
         ctx.set('Access-Control-Allow-Origin', '*')
-        ctx.set('Access-Control-Allow-Methods', 'GET,PUT,POST')
-        ctx.set('Access-Control-Allow-Headers', 'Content-Type, Authorization, Content-Length, X-Requested-With')
-        await next()
-      })
-      // .use(cors({
-      //   origin : 'https://gerardostours-prototype.herokuapp.com',
-      //   // credentials : true,
-      //   allowHeaders : [ 
-      //     'Origin', 'X-Requested-With', 'Content-Type', 'Accept'
-      //   ]
-      // })) // Security | Modify access to server via http(s)
+        ctx.set('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept')
+        // ctx.user('')
+        return await next()
+      }) // Security | Modify access to server via http(s)
       .use(bodyparser({ multipart : true }))
       .use(serve('./src/public/assets'))
       .use(session(sessionParams, app))
