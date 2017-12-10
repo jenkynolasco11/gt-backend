@@ -37,7 +37,17 @@ rootRoute.use('/', api.routes(), api.allowedMethods())
 /** ********* TODO : Uncomment this after finishing frontend *********/
 // rootRoute.use('/', admin.routes(), admin.allowedMethods())
 
-rootRoute.get('/', ctx => {
+// rootRoute.get('/ticket/*', ctx => {
+//   // TODO : Reconsider this redirect in here
+//   return ctx.render('index', { appurl : process.env.PORT })
+// })
+
+// rootRoute.get('/*', ctx => {
+//   // TODO : Reconsider this redirect in here
+//   return ctx.render('index', { appurl : process.env.PORT })
+// })
+
+rootRoute.get('/*', ctx => {
   // TODO : Reconsider this redirect in here
   return ctx.render('index', { appurl : process.env.PORT })
 })
