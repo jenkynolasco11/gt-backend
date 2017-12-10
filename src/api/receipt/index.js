@@ -9,9 +9,11 @@ receiptRouter.get('/:id/tickets', async ctx => {
   const { id } = ctx.params
   try {
     const receipt = await Receipt.findOne({ id })
+    console.log(receipt)
     const tickets = await Ticket.find({ receipt : receipt._id })
 
     if(tickets) return ctx.body = { ok : true, data : { tickets }, message : ''}
+
   } catch (e) {
     console.log(e)
   }
