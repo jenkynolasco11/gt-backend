@@ -1,6 +1,6 @@
 import Router from 'koa-router'
 
-import { Receipt, Ticket, meta } from '../../models'
+import { Receipt, Ticket, Meta } from '../../models'
 // import { Ride, RideDetail, Bus, } from '../../models'
 
 const receiptRouter = new Router({ prefix : 'receipt' })
@@ -21,7 +21,7 @@ receiptRouter.get('/:id/tickets', async ctx => {
   return ctx.body = null
 })
 
-receiptRoute.get('/last-receipt', ctx => {
+receiptRouter.get('/last-receipt', async ctx => {
   try {
     const { lastReceiptId } = await Meta.findOne({})
 
