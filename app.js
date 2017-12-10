@@ -52,9 +52,7 @@ const server = async done => {
 
     app
       .use(cors({
-        origin : [
-          'https://gerardostours-prototype.herokuapp.com'
-        ],
+        origin : 'https://gerardostours-prototype.herokuapp.com',
         // credentials : true,
         allowHeaders : [ 
           'Origin', 'X-Requested-With', 'Content-Type', 'Accept'
