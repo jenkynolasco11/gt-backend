@@ -88,7 +88,7 @@ export const reformatTicket = (ctx, next) => {
     departureDate : new Date(body.fecha_salida),
     departureTime : parseInt(body.hora_salida) - 1,
     howMany : body.numero_tickets,
-    luggage : parseInt(body.extra_maletas),
+    luggage : parseInt(body.extras_maletas),
     firstname : body.nombre.split(' ')[ 0 ],
     lastname : body.apellido.split(' ')[ 0 ],
     phoneNumber : body.telefono.replace(/\D/g, ''),
@@ -111,16 +111,23 @@ export const reformatTicket = (ctx, next) => {
       zipcode : body.zipcode_destino
     }
     : null,
-    totalAmount : parseFloat(body.total_final),
+    fee : parseFloat(body.total_final),
     cardBrand : body.card_brand.toUpperCase(),
     cardLastDigits : body.card_last_digits,
     paymentType : body.type ? body.type : 'CARD',
     status : 'NEW',
-    fee : parseFloat(body.precio_primera_ruta),
-    extraFee : parseFloat(body.precio_segunda_ruta),
+    totalAmount : 0,
+    extraFee : 0,
+    // fee : parseFloat(body.precio_primera_ruta),
+    // extraFee : parseFloat(body.precio_segunda_ruta),
   }
+  newBody.extraFee = parseFloat(body.precio_primera_ruta)
+  newBody.extraFee += parseFloat(body.precio_segunda_ruta)
+
+  newBody.totalAmount = newBody.fee + newBody.extraFee
 
   console.log(newBody)
+
 
   ctx.request.body = newBody
 
