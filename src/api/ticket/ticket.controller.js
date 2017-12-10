@@ -77,6 +77,8 @@ export const reformatTicket = (ctx, next) => {
   // console.log(body)
   if(body.isLocal) return next()
 
+  console.log(body)
+
   // This is for the page data
   const newBody = {
     frm : body.desde,
@@ -115,6 +117,8 @@ export const reformatTicket = (ctx, next) => {
     fee : parseFloat(body.precio_primera_ruta),
     extraFee : parseFloat(body.precio_segunda_ruta),
   }
+
+  console.log(newBody)
 
   ctx.request.body = newBody
 
