@@ -1,0 +1,8 @@
+{
+  bus : null | ObjectId,
+  routeTo : string,
+  routeFrom : string,
+  status : string,
+  time : number,
+  date : date,
+}

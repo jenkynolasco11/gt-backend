@@ -1,0 +1,62 @@
+From website: 
+
+desde----------
+hacia----------
+fecha_salida----------
+hora_salida----------
+numero_tickets----------
+extras_maletas------
+nombre------
+apellido------
+telefono------
+email------
+calle_origen----------
+cuidad_origen----------
+estado_origen----------
+zipcode_origen----------
+precio_primera_ruta----------
+precio_segunda_ruta----------
+calle_destino----------
+ciudad_destino----------
+estado_destino----------
+zipcode_destino----------
+total_final---------
+card_last_digits---------
+card_brand---------
+recoger---------
+dejar---------
+fecha_creacion---------
+
+
+From app: {
+  frm : string (NY,PA,MA),
+  to : string (NY,PA,MA),
+  departureDate : date,
+  departureTime : int,
+  howMany : int,
+  luggage : int,
+  firstname : string,
+  lastname : string,
+  phoneNumber : string{10},
+  email : string,
+  willPick : ['checked' | 'unchecked'],
+  willDrop : ['checked' | 'unchecked'],
+  pickUpAddress : [{
+    street : string,
+    city : string,
+    state : string,
+    zipcode : string
+  } | null ],
+  dropOffAddress [{
+    street : string,
+    city : string,
+    state : string,
+    zipcode : string
+  } | null ],
+  totalAmount : float,
+  cardBrand : string,
+  cardLastDigits : [ int | null ],
+  paymentType : [ 'CARD' | 'CASH' ],
+  fee : float,
+  extraFee : float,
+}

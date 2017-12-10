@@ -1,0 +1,5 @@
+response : {
+  ok : Boolean
+  data : null | object | array | string
+  message : string
+}

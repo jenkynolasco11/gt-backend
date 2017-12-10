@@ -1,0 +1,9 @@
+/:id (GET) => Retrieve a ride
+/all (GET) => Retrieve all rides
+/date/:date/hour/:hour (GET) => retrieve ride on given day and hour. If hour is -1, then it'll retrieve all rides in given date
+
+/insert (POST) => Creates a ride
+
+/:id/modify (PUT) => Modifies a ride
+/:id/update-details (PUT) => Update details or ride
+/assign-bus (PUT) => Assigns/Modifies bus for ride

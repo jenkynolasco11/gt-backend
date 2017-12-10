@@ -1,0 +1,18 @@
+/:id (GET) => Retrieves a ticket
+/:id/payment (GET) => Retrieves payment details of ticket
+/all (GET) => Returns all tickets (implement filters)
+/date/:d1/:d2? (GET) => Returns tickets from date d1 to date d2 (if d2 is not provided, returns all tickets from d1 only)
+/all/:ride (GET) => Returns all tickets from ride ride
+
+POSTs:
+
+/assign-ride (POST) => Assigns ride to ticket(s) 
+
+body : { 
+  rideId : string,
+  tickets : array<string>
+}
+
+/insert (POST) => Creates a ticket
+
+body : see create_ticket_model.txt file
