@@ -51,13 +51,19 @@ const server = async done => {
     app.keys = config.KEYS
 
     app
-      .use(cors({
-        origin : 'https://gerardostours-prototype.herokuapp.com',
-        // credentials : true,
-        allowHeaders : [ 
-          'Origin', 'X-Requested-With', 'Content-Type', 'Accept'
-        ]
-      })) // Security | Modify access to server via http(s)
+      .use((ctx, next) => {
+        ctx.header('Access-Control-Allow-Origin', '*')
+        ctx.header('Access-Control-Allow-Methods', 'GET,PUT,POST')
+        ctx.header('Access-Control-Allow-Headers', 'Content-Type, Authorization, Content-Length, X-Requested-With')
+        next()
+      })
+      // .use(cors({
+      //   origin : 'https://gerardostours-prototype.herokuapp.com',
+      //   // credentials : true,
+      //   allowHeaders : [ 
+      //     'Origin', 'X-Requested-With', 'Content-Type', 'Accept'
+      //   ]
+      // })) // Security | Modify access to server via http(s)
       .use(bodyparser({ multipart : true }))
       .use(serve('./src/public/assets'))
       .use(session(sessionParams, app))
