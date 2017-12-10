@@ -45,6 +45,7 @@ rootRoute.get('/ride/*', ctx => {
 })
 
 rootRoute.get('/', ctx => {
+  console.log('hereeeee...')
   return ctx.render('index', { appport : global.APPPORT })
   // TODO : Reconsider this redirect in here
   // if(ctx.isAuthenticated()) return ctx.redirect('/admin/dashboard')
