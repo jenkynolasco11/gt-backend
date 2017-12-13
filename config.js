@@ -3,7 +3,7 @@ const pass = 'database'
 const session = 'key for my session'  // generate this differently
 
 export const PORT = 8000
-export const DBURI = `mongodb://${ user }:${ pass }@ds115436.mlab.com:15436/gerardostours`
+export const DBURI = `mongodb://${ user }:${ pass }@ds137826.mlab.com:37826/gerardostrans`
 export const KEY = 'THIS IS MY KEY'
 export const SESSIONID = session
 export const KEYS = ['asdbkjqnwe', 'akhdasjdkajhkasjdn']
