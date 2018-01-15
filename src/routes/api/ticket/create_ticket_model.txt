@@ -1,0 +1,148 @@
+From website: 
+
+desde----------
+hacia----------
+fecha_salida----------
+hora_salida----------
+numero_tickets----------
+extras_maletas------
+nombre------
+apellido------
+telefono------
+email------
+calle_origen----------
+cuidad_origen----------
+estado_origen----------
+zipcode_origen----------
+precio_primera_ruta----------
+precio_segunda_ruta----------
+calle_destino----------
+ciudad_destino----------
+estado_destino----------
+zipcode_destino----------
+total_final---------
+card_last_digits---------
+card_brand---------
+recoger---------
+dejar---------
+fecha_creacion---------
+
+
+Creating a ticket =>
+
+ticket {
+  isLocal : true,
+  ticketQty : 3,
+  
+  // Person details
+  firstname : 'Jenky',
+  lastname : 'Nolasco',
+  phoneNumber : '3479742990',
+  email : 'jenky.nolasco@gmail.com',
+
+  // Trip details
+  willPick : true,
+  willDrop : false,
+  pickUpAddress : {
+    street : '116 Sherman Ave',
+    city : 'New York',
+    state : 'NY',
+    zipcode : 10034
+  },
+  dropOffAddress : null,
+  frm : 'NY',
+  to : 'PA',
+  date : Date.now(),
+  time : 11,
+
+  // Receipt details
+  totalAmount : 120,
+  luggageQty : 1,
+  paymentType : 'CARD',
+  cardBrand : 'VISA',
+  cardLastDigits : '0442',
+  
+  // Ticket details
+  fee : 30,
+  extraFee : 15,
+  
+  // package details
+  packageQty : 0,
+  hasPackage : false,
+  packageInfo : {
+    weight : 10.0,
+    message : 'Handle with care',
+  },
+}
+
+Retrieving a ticket =>
+
+ticket {
+  id : number,
+  willDrop : boolean,
+  willPick : boolean,
+  receipt : number,
+  status : string,
+  frm : string,
+  to : string,
+  pickUpAddress : {
+    street : string,
+    city : string,
+    state : string,
+    zipcode : number
+  } | null,
+  dropOffAddress : {
+    street : string,
+    city : string,
+    state : string,
+    zipcode : number
+  } | null,
+  time : number,
+  date : number,
+  person : {
+    firstname : string,
+    lastname : string,
+    email : string,
+    phoneNumber : string
+  },
+  isPackage : boolean,
+  pkg : {
+    weight : number,
+    message : string
+  } | null
+}
+
+// Info to take from tickets
+{ isLocal: true,
+  ticketQty: 3,
+  packageQty: 0,
+  willPick: true,
+  willDrop: false,
+  pickUpAddress:
+   { street: '116 Sherman Ave',
+     city: 'New York',
+     state: 'NY',
+     zipcode: 10034 },
+  dropOffAddress: { street: '', city: '', state: '', zipcode: '' },
+  frm: 'NY',
+  to: 'PA',
+  date: '2018-05-12T00:00:00.000Z',
+  time: 13,
+  luggageQty: 1,
+  hasPackage: false,
+  totalAmount: 105,
+  fee: 90,
+  extraFee: 15,
+  firstname: 'Jenky',
+  lastname: 'Nolasco',
+  phoneNumber: '3479742990',
+  email: 'jenky.nolasco@gmail.com',
+  weight: 0,
+  message: '',
+  cardBrand: 'VISA',
+  paymentType: 'CARD',
+  cardLastDigits: '4242',
+  expirationDate: '',
+  cvc: '',
+  isCard: false,
+  cardNumber: '' }

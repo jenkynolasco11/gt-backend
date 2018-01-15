@@ -1,0 +1,11 @@
+/dispatch/:ride/:bus (GET) => Sends ride to bus
+
+/:id (GET) => Retrieve a ride
+/all (GET) => Retrieve all rides
+/all/:bus (GET) => Retrieve all rides by bus
+/date/:date/hour/:hour (GET) => retrieve ride on given day and hour. If hour is -1, then it'll retrieve all rides in given date
+
+/save (POST) => Creates a ride (See create ride model)
+
+/:id/modify (PUT) => Modifies a ride (Takes same ride model)
+/assign-bus (PUT) => Assigns/Modifies bus for ride

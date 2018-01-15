@@ -1,0 +1,94 @@
+ticket {
+  id : Number,
+  person : ref => Person,
+  ride : ref => Ride,
+  receipt : ref => Receipt,
+  details : ref => TicketDetails,
+  package : ref => Package,
+  status : String [ 'USED', 'REDEEMED', 'NULL', 'NEW', 'DELETED' ],
+  willPick : Boolean,
+  willDrop : Boolean,
+  frm : String [ 'NY', 'PA' ],
+  to : String [ 'NY', 'PA' ],
+  time : Number,
+  date : Date,
+  isPackage : Boolean
+}
+
+ticketDetails {
+  pickUpAddress : ref => Address,
+  dropOffAddress: ref => Address,
+  redeemedCount : Number,
+  fee : Number,
+  extraFee : Number,
+  isLocal : Boolean
+}
+
+receipt {
+  id : Number,
+  paymentType : String [ 'CASH', 'CARD' ],
+  totalAmount : Number,
+  cardBrand : String [ '', 'VISA', 'MASTERCARD', 'AMERICAN EXPRESS', 'DISCOVERY' ],
+  packageQty : Number,
+  luggageQty : Number,
+  ticketQty : Number,
+  cardLastDigits : Number,
+}
+
+package {
+  weight : Number,
+  message : String,
+}
+
+person {
+  firstname : String,
+  lastname : String,
+  phoneNumber : String,
+  email : String,
+}
+
+user {
+  username : String,
+  person : ref => Person,
+  password : String,
+  position : String [ 'SUPERUSER', 'DRIVER', 'MANAGER', 'DISPATCHER', 'NONE' ],
+  status : String,
+  lastSession : Date
+}
+
+address {
+  street : String,
+  city : String,
+  state : String,
+  zip : Number
+}
+
+ride {
+  id : Number,
+  bus : ref => Bus,
+  frm : String [ 'NY', 'PA' ],
+  to : String [ 'NY', 'PA' ],
+  status : String [ 'FINISHED', 'PENDING', 'ASSIGNED', 'ON-THE-WAY', 'CANCELLED' ],
+  time : Number,
+  date : Date
+}
+
+rideDetails {
+  ride : ref => Ride,
+  seatsOccupied : Number,
+  luggage : Number,
+}
+
+bus {
+  id : Number,
+  user : ref => User,
+  active : Boolean,
+  name : String,
+  status : String [ 'STANDBY', 'OK', 'DAMAGED', 'DISABLED' ],
+}
+
+busDetails {
+  bus : ref => Bus,
+  seatQty : Number,
+  luggageQty : Number
+}

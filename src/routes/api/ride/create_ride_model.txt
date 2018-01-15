@@ -1,0 +1,35 @@
+Creating a ride => 
+
+ride {
+  bus : null | ObjectId,
+  to : string,
+  frm : string,
+  status : string,
+  time : number,
+  date : date,
+}
+
+Retrieving a ride => 
+
+ride {
+  id : number,
+  bus : {
+   id : number,
+   name : string,
+   status : string,
+   seats : number,
+   luggage : number 
+  } | null,
+  ticketsCount : number,
+  status : string,
+  frm : string,
+  to : string,
+  time : number,
+  date : date,
+  seatsOccupied : number,
+  luggage : number
+}
+
+* When ride is created, RideDetails is created as well
+
+Note: When adding tickets to ride, RideDetails should be modified

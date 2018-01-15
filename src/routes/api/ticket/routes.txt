@@ -1,0 +1,11 @@
+/:id (GET) => Retrieves a ticket
+/all (GET) => Returns all tickets
+/all/:ride (GET) => Returns all tickets given a ride
+/:id/receipt (GET) => Returns a receipt given a ticket id
+
+/save (POST) => Saves (a|many) ticket(s)
+
+/:id/modify (PUT) => Modifies a ticket (uses same ticket model)
+/assign/ride (PUT) => Assigns ride to ticket(s)
+/modify/status (PUT) => Modifies status to ticket
+/delete (PUT) => Modifies status of ticket to DELETED

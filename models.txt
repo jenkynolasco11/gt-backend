@@ -1,0 +1,114 @@
+desde----------
+hacia----------
+fecha_salida----------
+hora_salida----------
+numero_tickets----------
+extras_maletas------
+nombre------
+apellido------
+telefono------
+email------
+calle_origen----------
+cuidad_origen----------
+estado_origen----------
+zipcode_origen----------
+precio_primera_ruta----------
+precio_segunda_ruta----------
+calle_destino----------
+ciudad_destino----------
+estado_destino----------
+zipcode_destino----------
+total_final---------
+card_last_digits---------
+card_brand---------
+recoger---------
+dejar---------
+fecha_creacion---------
+
+-====================-
+ economicDetails :
+ id
+ cardLastDigits
+ cardBrand
+ totalAmountIssued
+ createdAt
+
+-====================-
+ Ticket :
+ id
+ personId
+ rideId
+ economicDetailsId
+ luggageQty
+ ticketStatus => [ 'USED', 'REDEEMABLE', 'NULLIFIED', '' ]
+ willPickUp
+ willDropOff
+ ticketDetailsId
+ createdAt
+
+-====================-
+ TicketDetails:
+ id
+ pickUpPlace
+ dropOffPlace
+ createdAt
+ redeemedCount => [ default : 0 ]
+
+-====================-
+ Person:
+ id
+ firstname
+ lastname
+ number
+ email
+ createdAt
+
+-====================-
+ User:
+ id
+ personId
+ username
+ password
+ position
+
+-====================-
+ Ride:
+ id
+ busId ( assigned bus )
+ routeToId
+ routeFromId
+ time
+ date
+ createdAt
+
+ -====================-
+ Bus:
+ id
+ userId (driver)
+ name
+ status => [ 'STANDBY', 'OK', 'DAMAGED' ]
+ passengersCant
+ luggageCante
+ 
+ -====================-
+ Route:
+ id
+ state
+ city
+ street
+ zipcode
+ fee
+ extraFee => [ default : 0 ]
+
+
+
+
+Extras!!! ===========================
+
+ - A los Driver hay que ponerle un numero, como son Identificados ellos
+ F15, F140, F10 etc...
+ Un Alias <========= Maybe, to User in case is a Driver???
+
+- Poner si pasajero es especial (para tener en cuenta)
+- Dispatcher debe asignar el autobus
+- Dispatcher puede modificar ticket
