@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "start" : "babel-node index.js",
     "dev": "nodemon --exec babel-node index.js -e *.js*",
     "mockup": "nodemon --exec babel-node ./src/models/mockupData.js -e .js",
     "mockup:one": "babel-node ./src/models/mockupData.js",
